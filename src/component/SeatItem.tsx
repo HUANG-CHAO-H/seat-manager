@@ -1,10 +1,10 @@
 import React, {useMemo} from "react";
-import {SeatCellInfo, SeatOwnerInfo} from "../type";
+import {SeatCellInfo, UserInfo} from "../type";
 import './component.less';
 
 export interface SeatItemProps {
     seat: SeatCellInfo;
-    owner?: SeatOwnerInfo;
+    owner?: UserInfo;
 }
 
 export function SeatItem(props: SeatItemProps) {

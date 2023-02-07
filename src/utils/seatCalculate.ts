@@ -19,15 +19,18 @@ export interface SeatCalculateProps {
     getSeatKey: (row: number, column: number) => string | number;
     // 生成座位的name
     getSeatName: (row: number, column: number) => string;
+    // 生成座位的index
+    getSeatIndex: (row: number, column: number) => number;
 }
 export function seatCalculate(props: SeatCalculateProps): SeatCellInfo[] {
-    const { startX, startY, row, column, width, height, textDirection, getSeatKey, getSeatName } = props;
+    const { startX, startY, row, column, width, height, textDirection, getSeatKey, getSeatName, getSeatIndex } = props;
     const seats: SeatCellInfo[] = [];
     for (let i = 0; i < row; i++) {
         for (let j = 0; j < column; j++) {
             seats.push({
                 key: getSeatKey(i, j),
                 name: getSeatName(i, j),
+                index: getSeatIndex(i, j),
                 width,
                 height,
                 x: startX + j * width,

@@ -1,18 +1,38 @@
-import React, {useMemo} from 'react'
-import ReactDOM from 'react-dom/client'
-import background from '../public/background.jpg';
-import { Image } from '@douyinfe/semi-ui';
+import React from 'react'
+import ReactDOM from 'react-dom/client';
+import {Nav} from "@douyinfe/semi-ui";
+import { IconUser, IconStar, IconSetting, IconSemiLogo } from '@douyinfe/semi-icons';
 import './index.less'
-import {SeatItem} from "./component/SeatItem";
-import {seatInfoArray} from "./config/seat_B1";
+import {Workspace} from "./component/Workspace";
 
 function AppIndex() {
     return (
         <div className="app-index-container">
-            <div>left</div>
             <div>
-                <Image preview={false} src={background}/>
-                {seatInfoArray.map(s => <SeatItem key={s.key} seat={s}/>)}
+                <Nav
+                    defaultOpenKeys={['job']}
+                    items={[
+                        { itemKey: 'user', text: '用户列表', icon: <IconUser /> },
+                        { itemKey: 'union', text: '座位管理', icon: <IconStar /> },
+                        {
+                            text: '任务平台',
+                            icon: <IconSetting />,
+                            itemKey: 'job',
+                            items: ['任务管理', '用户任务查询'],
+                        },
+                    ]}
+                    onSelect={key => console.log(key)}
+                    header={{
+                        logo: <IconSemiLogo style={{ height: '36px', fontSize: 36 }} />,
+                        text: 'B1 座位图'
+                    }}
+                    footer={{
+                        collapseButton: true,
+                    }}
+                />
+            </div>
+            <div>
+                <Workspace/>
             </div>
         </div>
     )

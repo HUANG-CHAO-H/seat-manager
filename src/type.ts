@@ -3,6 +3,8 @@ export interface SeatCellInfo {
     key: string | number;
     // 座位的名称
     name: string;
+    // 座位索引号，顺序
+    index: number;
     // 座位的宽
     width: number;
     // 座位的高
@@ -15,7 +17,7 @@ export interface SeatCellInfo {
     textDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
 }
 
-export interface SeatOwnerInfo {
+export interface UserInfo {
     // 用户名称
     username: string;
     // 性别
@@ -24,4 +26,12 @@ export interface SeatOwnerInfo {
     email?: string;
     // 头像
     avatarUrl?: string;
+}
+
+export interface WorkspaceInfo {
+    readonly key: string;
+    readonly name: string;
+    readonly seatInfoMap: Map<string | number, SeatCellInfo>;
+    readonly seatInfoArray: Array<SeatCellInfo>
+    readonly backgroundSrc: string;
 }
