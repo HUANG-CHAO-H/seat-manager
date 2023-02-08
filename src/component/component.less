@@ -3,24 +3,51 @@
   border-style: outset;
   background-color: white;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: small;
 }
 
 .workspace-container {
-  position: relative;
-  width: fit-content;
-  border-style: ridge;
-  border-color: var(--semi-color-success-light-active);
-  .workspace-preview-button {
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    padding-top: 10px;
-    position: absolute;
-    z-index: 1000;
-    background-color: #3498db;
-    border-radius: 0 0 999px 0;
-    font-weight: bold;
-    font-size: revert;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  & > div:first-child {
+    flex-shrink: 1;
+    flex-grow: 1;
+    overflow: auto;
+    & > div:first-child {
+      position: relative;
+      width: fit-content;
+      border-style: ridge;
+      border-color: var(--semi-color-success-light-active);
+    }
   }
+}
+
+.new-scroll-bar::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+  -webkit-border-radius: 0
+}
+.new-scroll-bar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px
+}
+.new-scroll-bar::-webkit-scrollbar-thumb {
+  height: 50px;
+  background-color: #b8b8b8;
+  -webkit-border-radius: 6px;
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+  border: 2px solid #fff;
+  -moz-opacity: 0.5;
+  opacity: 0.5
+}
+.new-scroll-bar::-webkit-scrollbar-thumb:hover {
+  height: 50px;
+  background-color: #878987;
+  -webkit-border-radius: 6px
 }

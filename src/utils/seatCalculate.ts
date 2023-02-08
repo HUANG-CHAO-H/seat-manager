@@ -1,4 +1,4 @@
-import {SeatCellInfo} from "../type";
+import {SeatInfo} from "../type";
 
 export interface SeatCalculateProps {
     // 开始的横坐标x
@@ -22,9 +22,9 @@ export interface SeatCalculateProps {
     // 生成座位的index
     getSeatIndex: (row: number, column: number) => number;
 }
-export function seatCalculate(props: SeatCalculateProps): SeatCellInfo[] {
+export function seatCalculate(props: SeatCalculateProps): SeatInfo[] {
     const { startX, startY, row, column, width, height, textDirection, getSeatKey, getSeatName, getSeatIndex } = props;
-    const seats: SeatCellInfo[] = [];
+    const seats: SeatInfo[] = [];
     for (let i = 0; i < row; i++) {
         for (let j = 0; j < column; j++) {
             seats.push({

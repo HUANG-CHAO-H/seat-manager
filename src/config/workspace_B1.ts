@@ -1,8 +1,8 @@
-import {SeatCellInfo, WorkspaceInfo} from "../type";
+import {SeatInfo, WorkspaceInfo} from "../type";
 import {seatCalculate} from "../utils";
 import background from '../../public/background.jpg';
 
-const seatInfoMap = new Map<string | number, SeatCellInfo>();
+const seatInfoMap = new Map<string | number, SeatInfo>();
 
 function getColumnSeats(startX: number, startY: number, groups: string[][]) {
     return seatCalculate({
@@ -12,7 +12,7 @@ function getColumnSeats(startX: number, startY: number, groups: string[][]) {
         column: groups[0].length,
         width: 31,
         height: 51,
-        textDirection: 'column-reverse',
+        textDirection: 'column',
         getSeatKey: (row, column) => groups[row][column],
         getSeatName: (row, column) => groups[row][column],
         getSeatIndex: (row, column) => Number(groups[row][column]),
@@ -109,7 +109,7 @@ function getRowSeats(startX: number, startY: number, groups: string[][]) {
         column: groups[0].length,
         width: 51,
         height: 31,
-        textDirection: 'column-reverse',
+        textDirection: 'row',
         getSeatKey: (row, column) => groups[row][column],
         getSeatName: (row, column) => groups[row][column],
         getSeatIndex: (row, column) => Number(groups[row][column]),
@@ -182,7 +182,7 @@ getRowSeats(1602, 1116, [
     ['240', '241', '242', '243', '244'],
 ]).map(s => seatInfoMap.set(s.key, s));
 
-const seatInfoArray: SeatCellInfo[] = Array(seatInfoMap.size);
+const seatInfoArray: SeatInfo[] = Array(seatInfoMap.size);
 for (const [,s] of seatInfoMap) seatInfoArray.push(s);
 
 export const WorkspaceB1: WorkspaceInfo = {
